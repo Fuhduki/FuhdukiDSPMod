@@ -17,14 +17,27 @@ namespace DestructorModeReset
         /// </summary>
         public int DestructCursor { get; }
 
+        /// <summary>
+        /// 削除の連鎖モードの設定値(文字列)
+        /// </summary>
+        public string DestructChainString { get; }
+
+        /// <summary>
+        /// 削除の連鎖モードのリセット値
+        /// </summary>
+        public bool? DestructChain { get; }
+
         public PluginConfig(
             string modVersion,
             bool enableDecstructCursorReset,
-            int destructCursor)
+            int destructCursor,
+            string destructChainString)
         {
             ModVersion = modVersion;
             EnableDecstructCursorReset = enableDecstructCursorReset;
             DestructCursor = destructCursor;
+            DestructChainString = destructChainString;
+            DestructChain = PluginConfigExtention.ParceDestructChainConfig(destructChainString);
         }
     }
 
@@ -32,6 +45,9 @@ namespace DestructorModeReset
     {
         // 削除のモードに設定できる値
         private static readonly IEnumerable<int> SettableDestructCursor = new List<int>() { 0, 1 };
+
+        // 削除の連鎖モードの設定保持用の値
+        private static readonly string DestructChainKeepString = "keep";
 
         /// <summary>
         /// 設定のチェックと修正
@@ -49,7 +65,31 @@ namespace DestructorModeReset
                 destructCursor = 0;
             }
 
-            return new PluginConfig(config.ModVersion, config.EnableDecstructCursorReset, destructCursor);
+            var destructChainString = config.DestructChainString;
+            if (destructChainString.ToLower() != DestructChainKeepString && 
+                !bool.TryParse(destructChainString, out var _))
+            {
+                fixedPluginConfig = true;
+                destructChainString = "false";
+            }
+
+            return new PluginConfig(config.ModVersion, config.EnableDecstructCursorReset, destructCursor, destructChainString);
+        }
+
+        /// <summary>
+        /// 削除の連鎖モードの文字列をNull許容Bool値に変換
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static bool? ParceDestructChainConfig(string val)
+        {
+            if (val.ToLower() == DestructChainKeepString)
+                return null;
+
+            if (bool.TryParse(val, out var result))
+                return result;
+            else
+                return false;
         }
     }
 }

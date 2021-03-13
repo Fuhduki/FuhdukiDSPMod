@@ -13,7 +13,7 @@ namespace DestructorModeReset
     {
         public const string ModGuid = "Fuhduki.DSP.DestructorModeReset";
         public const string ModName = "DestructorModeReset";
-        public const string ModVersion = "1.0.0";
+        public const string ModVersion = "1.0.1";
         public const string InitializeModVersion = "0.0.0";
 
         new internal static ManualLogSource Logger;
@@ -75,14 +75,22 @@ namespace DestructorModeReset
             var modVersionConfig = config.Bind<string>("Base", "ModVersion", InitializeModVersion, "Don't change.");
             if (modVersionConfig.Value == InitializeModVersion)
             {
-                isSaveConfig = true;
                 Logger.LogInfo("cleared config.");
+                isSaveConfig = true;
+                modVersionConfig.SetSerializedValue(ModVersion);
+            }else if (modVersionConfig.Value != ModVersion)
+            {
+                Logger.LogInfo($"add new config : Version ${modVersionConfig.Value} -> {ModVersion}.");
+                isSaveConfig = true;
+                modVersionConfig.SetSerializedValue(ModVersion);
             }
 
             var pluginConfig = new PluginConfig(
                 config.Bind<string>("Base", "ModVersion", ModVersion, "Don't change.").Value,
                 config.Bind<bool>("Base", "EnableDecstructCursorReset", true).Value,
-                config.Bind<int>("Base", "DestructCursor", 0, new ConfigDescription("DestructCursor Settable Value : 0, 1")).Value)
+                config.Bind<int>("Base", "DestructCursor", 0, new ConfigDescription("DestructCursor Settable Value : 0, 1")).Value,
+                config.Bind<string>("Base", "DestructChain", "false", "DestructChain Settable Value : true, false, keep").Value
+                )
                 .CheckAndFixConfig(out var fixConfig);
             isSaveConfig |= fixConfig;
 
@@ -90,11 +98,10 @@ namespace DestructorModeReset
             Logger.LogInfo($"isSaveConfig : {isSaveConfig}");
             Logger.LogInfo($"Setting: EnableDecstructCursorReset : {pluginConfig.EnableDecstructCursorReset}");
             Logger.LogInfo($"Setting: DestructCursor : {pluginConfig.DestructCursor}");
+            Logger.LogInfo($"Setting: DestructChainString : {pluginConfig.DestructChainString}");
+            Logger.LogInfo($"Setting: DestructChain : {pluginConfig.DestructChain}");
 #endif
-
             return pluginConfig;
         }
-
-
     }
 }

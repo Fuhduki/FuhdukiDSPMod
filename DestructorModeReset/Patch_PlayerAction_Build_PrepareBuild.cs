@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using System.Reflection;
 
 namespace DestructorModeReset
 {
@@ -17,7 +18,16 @@ namespace DestructorModeReset
                 return;
 
             if (DestructorModeResetPlugin.PluginConfig.EnableDecstructCursorReset)
-                    __instance.destructCursor = DestructorModeResetPlugin.PluginConfig.DestructCursor;
+            {
+                __instance.destructCursor = DestructorModeResetPlugin.PluginConfig.DestructCursor;
+
+                if(DestructorModeResetPlugin.PluginConfig.DestructChain.HasValue)
+                {
+                    var field = typeof(UIBuildMenu).GetField("forceDestructChain", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
+                    field.SetValue(UIRoot.instance.uiGame.buildMenu, DestructorModeResetPlugin.PluginConfig.DestructChain.Value);
+                    __instance.destructChain = DestructorModeResetPlugin.PluginConfig.DestructChain.Value;
+                }
+            }
         }
     }
 }
