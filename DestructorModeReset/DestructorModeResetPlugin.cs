@@ -13,7 +13,7 @@ namespace DestructorModeReset
     {
         public const string ModGuid = "Fuhduki.DSP.DestructorModeReset";
         public const string ModName = "DestructorModeReset";
-        public const string ModVersion = "1.0.1";
+        public const string ModVersion = "1.0.0";
         public const string InitializeModVersion = "0.0.0";
 
         new internal static ManualLogSource Logger;
