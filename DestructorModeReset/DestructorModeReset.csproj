@@ -67,6 +67,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y $(TargetDir)DestructorModeReset.dll "D:\Steam\steamapps\common\Dyson Sphere Program\BepInEx\plugins\DestructorModeReset\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /I /Y $(TargetDir)$(TargetFileName) "D:\Steam\steamapps\common\Dyson Sphere Program\BepInEx\plugins\DestructorModeReset\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
