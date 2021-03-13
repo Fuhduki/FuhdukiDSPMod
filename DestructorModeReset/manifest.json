@@ -1,0 +1,9 @@
+{
+  "name": "DestructorModeReset",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/Fuhduki/FuhdukiDSPMod/tree/main/DestructorModeReset",
+  "description": "Resets the status when you enter dismantle mode.",
+  "dependencies": [
+    "xiaoye97-BepInEx-5.4.5"
+  ]
+}
