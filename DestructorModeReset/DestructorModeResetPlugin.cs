@@ -19,14 +19,14 @@ namespace DestructorModeReset
         new internal static ManualLogSource Logger;
         new internal static ConfigFile Config;
 
-        public static PluginConfig PluginConfig = new PluginConfig();
+        public static PluginConfig PluginConfig;
 
         public void Awake()
         {
             Logger = base.Logger;
             Config = base.Config;
             Config.SaveOnConfigSet = false;
-            ConfigReload(true);
+            PluginConfigReload(true);
             Config.ConfigReloaded += ConfigReloadedEvent;
             var harmony = new Harmony($"{ModGuid}.patch");
             harmony.PatchAll(typeof(Patch_GameMain_Begin));
@@ -40,27 +40,33 @@ namespace DestructorModeReset
         /// <param name="e"></param>
         public static void ConfigReloadedEvent(object sender, EventArgs e)
         {
-            ConfigReload();
+            PluginConfigReload();
         }
 
         /// <summary>
         /// 設定のリロード
         /// </summary>
         /// <param name="isForceSaveConfig"></param>
-        private static void ConfigReload(bool isForceSaveConfig = false)
+        private static void PluginConfigReload(bool isForceSaveConfig = false)
         {
             PluginConfig = GetPluginConfig(Config, out var isSaveConfig);
 
             if (isForceSaveConfig || isSaveConfig)
-            {
-                var orphanedEntries = typeof(ConfigFile)
-                    .GetProperty("OrphanedEntries", BindingFlags.NonPublic | BindingFlags.Instance)
-                    .GetValue(Config, null) as Dictionary<ConfigDefinition, string>;
-                orphanedEntries?.Clear();
-                Config.Save();
-                Logger.LogInfo("saved config.");
-            }
-            Logger.LogInfo("config reloaded.");
+                SavePluginConfig();
+            Logger.LogInfo("Config reloaded.");
+        }
+
+        /// <summary>
+        /// 設定の保存
+        /// </summary>
+        private static void SavePluginConfig()
+        {
+            var orphanedEntries = typeof(ConfigFile)
+                .GetProperty("OrphanedEntries", BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetValue(Config, null) as Dictionary<ConfigDefinition, string>;
+            orphanedEntries?.Clear();
+            Config.Save();
+            Logger.LogInfo("Saved config.");
         }
 
         /// <summary>
@@ -78,7 +84,7 @@ namespace DestructorModeReset
                 Logger.LogInfo("cleared config.");
                 isSaveConfig = true;
                 modVersionConfig.SetSerializedValue(ModVersion);
-            }else if (modVersionConfig.Value != ModVersion)
+            } else if (modVersionConfig.Value != ModVersion)
             {
                 Logger.LogInfo($"add new config : Version ${modVersionConfig.Value} -> {ModVersion}.");
                 isSaveConfig = true;

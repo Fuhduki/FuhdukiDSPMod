@@ -27,6 +27,13 @@ namespace DestructorModeReset
         /// </summary>
         public bool? DestructChain { get; }
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="modVersion"></param>
+        /// <param name="enableDecstructCursorReset"></param>
+        /// <param name="destructCursor"></param>
+        /// <param name="destructChainString"></param>
         public PluginConfig(
             string modVersion,
             bool enableDecstructCursorReset,
@@ -73,7 +80,11 @@ namespace DestructorModeReset
                 destructChainString = "false";
             }
 
-            return new PluginConfig(config.ModVersion, config.EnableDecstructCursorReset, destructCursor, destructChainString);
+            return new PluginConfig(
+                config.ModVersion,
+                config.EnableDecstructCursorReset,
+                destructCursor,
+                destructChainString);
         }
 
         /// <summary>
