@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace DeleteFourceReset
+namespace DestructorModeReset
 {
     [HarmonyPatch(typeof(GameMain), "Begin")]
     class Patch_GameMain_Begin

@@ -7,8 +7,8 @@
     <ProjectGuid>{35ABAB70-CB99-4357-826B-84AA5C37F310}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeleteFourceReset</RootNamespace>
-    <AssemblyName>DeleteFourceReset</AssemblyName>
+    <RootNamespace>DestructorModeReset</RootNamespace>
+    <AssemblyName>DestructorModeReset</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,12 +33,15 @@
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>..\Libs\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Libs\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\Libs\BepInEx.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,9 +51,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>..\Libs\UnityEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\Libs\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +67,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Y $(TargetDir)DeleteFourceReset.dll "D:\Steam\steamapps\common\Dyson Sphere Program\BepInEx\plugins\DeleteFourceReset\DeleteFourceReset.dll"</PostBuildEvent>
+    <PostBuildEvent>xcopy /I /Y $(TargetDir)DestructorModeReset.dll "D:\Steam\steamapps\common\Dyson Sphere Program\BepInEx\plugins\DestructorModeReset\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

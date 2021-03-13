@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DeleteFourceReset
+namespace DestructorModeReset
 {
     public readonly struct PluginConfig
     {

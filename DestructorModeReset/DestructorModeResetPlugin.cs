@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace DeleteFourceReset
+namespace DestructorModeReset
 {
     [BepInPlugin(ModGuid, ModName, ModVersion)]
     public class DestructorModeResetPlugin : BaseUnityPlugin
