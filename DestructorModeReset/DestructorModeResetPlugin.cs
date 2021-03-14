@@ -52,20 +52,29 @@ namespace DestructorModeReset
             PluginConfig = GetPluginConfig(Config, out var isSaveConfig);
 
             if (isForceSaveConfig || isSaveConfig)
-                SavePluginConfig();
+                SavePluginConfig(Config, PluginConfig);
             Logger.LogInfo("Config reloaded.");
         }
 
         /// <summary>
         /// 設定の保存
         /// </summary>
-        private static void SavePluginConfig()
+        private static void SavePluginConfig(ConfigFile config, PluginConfig pluginConfig)
         {
+            config.Bind<string>("Base", "ModVersion", ModVersion, "Don't change.").Value = pluginConfig.ModVersion;
+            config.Bind<bool>("Base", "EnableDecstructCursorReset", true).Value = pluginConfig.EnableDecstructCursorReset;
+            config.Bind<int>("Base", "DestructCursor", 0, new ConfigDescription("DestructCursor Settable Value : 0, 1")).Value = pluginConfig.DestructCursor;
+            config.Bind<string>("Base", "DestructChain", "false", "DestructChain Settable Value : true, false, keep").Value = pluginConfig.DestructChainString;
+            config.Bind<bool>("Base", "EnableDestructFilterReset", false).Value = pluginConfig.EnableDestructFilterReset;
+            config.Bind<bool>("Base", "DestructFilterFactory", true).Value = pluginConfig.DestructFilterFactory;
+            config.Bind<bool>("Base", "DestructFilterBelt", true).Value = pluginConfig.DestructFilterBelt;
+            config.Bind<bool>("Base", "DestructFilterInserter", true).Value = pluginConfig.DestructFilterInserter;
+
             var orphanedEntries = typeof(ConfigFile)
                 .GetProperty("OrphanedEntries", BindingFlags.NonPublic | BindingFlags.Instance)
                 .GetValue(Config, null) as Dictionary<ConfigDefinition, string>;
             orphanedEntries?.Clear();
-            Config.Save();
+            config.Save();
             Logger.LogInfo("Saved config.");
         }
 
@@ -83,12 +92,12 @@ namespace DestructorModeReset
             {
                 Logger.LogInfo("cleared config.");
                 isSaveConfig = true;
-                modVersionConfig.SetSerializedValue(ModVersion);
+                modVersionConfig.Value = ModVersion;
             } else if (modVersionConfig.Value != ModVersion)
             {
                 Logger.LogInfo($"add new config : Version ${modVersionConfig.Value} -> {ModVersion}.");
                 isSaveConfig = true;
-                modVersionConfig.SetSerializedValue(ModVersion);
+                modVersionConfig.Value = ModVersion;
             }
 
             var pluginConfig = new PluginConfig(
@@ -102,6 +111,7 @@ namespace DestructorModeReset
                 config.Bind<bool>("Base", "DestructFilterInserter", true).Value
                 )
                 .CheckAndFixConfig(out var fixConfig);
+
             isSaveConfig |= fixConfig;
 
 #if DEBUG
