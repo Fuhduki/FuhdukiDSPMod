@@ -27,11 +27,11 @@ Also, if you want to reflect the settings, please load from save.
 
 ## CHANGE LOG
 
-### v1.0.0
+### v1.1.0
 
  - Add reset filter (Default Dispable).
 
-### v1.1.0
+### v1.0.0
 
  - Released.
 
