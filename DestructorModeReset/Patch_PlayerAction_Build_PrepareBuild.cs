@@ -28,6 +28,13 @@ namespace DestructorModeReset
                     __instance.destructChain = DestructorModeResetPlugin.PluginConfig.DestructChain.Value;
                 }
             }
+
+            if(DestructorModeResetPlugin.PluginConfig.EnableDestructFilterReset)
+            {
+                __instance.destructFilterFacility = DestructorModeResetPlugin.PluginConfig.DestructFilterFactory;
+                __instance.destructFilterBelt = DestructorModeResetPlugin.PluginConfig.DestructFilterBelt;
+                __instance.destructFilterInserter = DestructorModeResetPlugin.PluginConfig.DestructFilterInserter;
+            }
         }
     }
 }

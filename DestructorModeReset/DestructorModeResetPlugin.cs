@@ -13,7 +13,7 @@ namespace DestructorModeReset
     {
         public const string ModGuid = "Fuhduki.DSP.DestructorModeReset";
         public const string ModName = "DestructorModeReset";
-        public const string ModVersion = "1.0.0";
+        public const string ModVersion = "1.1.0";
         public const string InitializeModVersion = "0.0.0";
 
         new internal static ManualLogSource Logger;
@@ -95,7 +95,11 @@ namespace DestructorModeReset
                 config.Bind<string>("Base", "ModVersion", ModVersion, "Don't change.").Value,
                 config.Bind<bool>("Base", "EnableDecstructCursorReset", true).Value,
                 config.Bind<int>("Base", "DestructCursor", 0, new ConfigDescription("DestructCursor Settable Value : 0, 1")).Value,
-                config.Bind<string>("Base", "DestructChain", "false", "DestructChain Settable Value : true, false, keep").Value
+                config.Bind<string>("Base", "DestructChain", "false", "DestructChain Settable Value : true, false, keep").Value,
+                config.Bind<bool>("Base", "EnableDestructFilterReset", false).Value,
+                config.Bind<bool>("Base", "DestructFilterFactory", true).Value,
+                config.Bind<bool>("Base", "DestructFilterBelt", true).Value,
+                config.Bind<bool>("Base", "DestructFilterInserter", true).Value
                 )
                 .CheckAndFixConfig(out var fixConfig);
             isSaveConfig |= fixConfig;
@@ -105,7 +109,10 @@ namespace DestructorModeReset
             Logger.LogInfo($"Setting: EnableDecstructCursorReset : {pluginConfig.EnableDecstructCursorReset}");
             Logger.LogInfo($"Setting: DestructCursor : {pluginConfig.DestructCursor}");
             Logger.LogInfo($"Setting: DestructChainString : {pluginConfig.DestructChainString}");
-            Logger.LogInfo($"Setting: DestructChain : {pluginConfig.DestructChain}");
+            Logger.LogInfo($"Setting: EnableDestructFilterReset : {pluginConfig.EnableDestructFilterReset}");
+            Logger.LogInfo($"Setting: DestructFilterFactory : {pluginConfig.DestructFilterFactory}");
+            Logger.LogInfo($"Setting: DestructFilterBelt : {pluginConfig.DestructFilterBelt}");
+            Logger.LogInfo($"Setting: DestructFilterInserter : {pluginConfig.DestructFilterInserter}");
 #endif
             return pluginConfig;
         }

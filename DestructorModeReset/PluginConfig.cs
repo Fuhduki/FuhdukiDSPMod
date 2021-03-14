@@ -28,6 +28,26 @@ namespace DestructorModeReset
         public bool? DestructChain { get; }
 
         /// <summary>
+        /// 削除のフィルターリセット有効フラグ
+        /// </summary>
+        public bool EnableDestructFilterReset { get; }
+
+        /// <summary>
+        /// 削除の施設フィルターのリセット値
+        /// </summary>
+        public bool DestructFilterFactory { get; }
+
+        /// <summary>
+        /// 削除のコンベアベルトフィルターのリセット値
+        /// </summary>
+        public bool DestructFilterBelt { get; }
+
+        /// <summary>
+        /// 削除のソーターフィルターのリセット値
+        /// </summary>
+        public bool DestructFilterInserter { get; }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="modVersion"></param>
@@ -38,13 +58,22 @@ namespace DestructorModeReset
             string modVersion,
             bool enableDecstructCursorReset,
             int destructCursor,
-            string destructChainString)
+            string destructChainString,
+            bool enableDestructFilterReset,
+            bool destructFilterFactory,
+            bool destructFilterBelt,
+            bool destructFilterInserter)
         {
             ModVersion = modVersion;
             EnableDecstructCursorReset = enableDecstructCursorReset;
             DestructCursor = destructCursor;
             DestructChainString = destructChainString;
             DestructChain = PluginConfigExtention.ParceDestructChainConfig(destructChainString);
+
+            EnableDestructFilterReset = enableDestructFilterReset;
+            DestructFilterFactory = destructFilterFactory;
+            DestructFilterBelt = destructFilterBelt;
+            DestructFilterInserter = destructFilterInserter;
         }
     }
 
@@ -80,11 +109,24 @@ namespace DestructorModeReset
                 destructChainString = "false";
             }
 
+            var destructFilterFactory = config.DestructFilterFactory;
+            var destructFilterInserter = config.DestructFilterInserter;
+            if(destructFilterFactory && !destructFilterInserter)
+            {
+                fixedPluginConfig = true;
+                destructFilterFactory = true;
+                destructFilterInserter = true;
+            }
+
             return new PluginConfig(
                 config.ModVersion,
                 config.EnableDecstructCursorReset,
                 destructCursor,
-                destructChainString);
+                destructChainString,
+                config.EnableDestructFilterReset,
+                destructFilterFactory,
+                config.DestructFilterBelt,
+                destructFilterInserter);
         }
 
         /// <summary>
