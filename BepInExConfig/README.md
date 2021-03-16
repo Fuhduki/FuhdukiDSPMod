@@ -50,11 +50,11 @@ Create config class.
         public string TestField;
 
         // Work - Enum
-        [BepInExConfigMember("Base", "TestKey", KeyCode.Tab, "Descripton", order: 1)]
+        [BepInExConfigMember("Base", "TestKey", KeyCode.Tab, "Sample Key Code Config", order: 1)]
         public KeyCode TestKey;
 
         // Not Work - Only public properties or field will work.
-        [BepInExConfigMember("Base", "TestProp", 10, order: 99)]
+        [BepInExConfigMember("Base", "TestProp", 10)]
         private int PrivateProp { get; set; }
 
         // Not Work  - If you don't add the attribute, it won't work.
@@ -111,7 +111,7 @@ Saved Config Sample
 # Default value: hogehoge
 TestField = hugahuga
 
-## Descripton
+## Sample Key Code Config
 # Setting type: KeyCode
 # Default value: Tab
 # Acceptable values: None, ...
@@ -121,6 +121,56 @@ TestKey = KeypadEnter
 # Default value: 10
 TestProp = 999
 ```
+
+### Simply API Document (簡単な API ドキュメント)
+
+#### Attributes (属性)
+
+- `BepInExConfig`
+    - Can only be given to classes. クラスにしか付与できない属性です
+    - The configuration class must have a no-argument constructor. (It's OK if you don't write a constructor)
+
+- `BepInExConfigMember(string section, string key, string defaultValue, string description = "", int order = 0)`
+    - Can only be given to field or property.
+    - Only Work to public field or property.
+    - DefaultValue Typse are string, bool, byte, short, ushort, int, uint, long, ulong, float, double, decimal or object(for Enum).
+    - The order parameter allows you to determine the order of the configuration items.
+        - If nothing is set, the settings will be made in order from the top.
+    - If the type of the member is different from the type of the defaultValue, an exception will be thrown when saving or loading.
+
+#### Extended methods (拡張メソッド)
+
+- `T LoadConfig<T>(this ConfigFile config)`
+    - Specify the class with the BepInExConfig attribute to T.
+    - An instance of the loaded configuration class will be returned.
+
+- `void SaveConfig<T>(this ConfigFile config, T saveTarget)`
+    - Pass an instance of the class with the BepInExConfig attribute to the saveTarget parameter.
+
+### 簡単な API ドキュメント
+
+#### 属性
+
+- `BepInExConfig`
+    - クラスにしか付与できない属性です
+    - 設定クラスには引数なしのコンストラクタが必要です。(コンストラクタを何も書かなければOKです)
+
+- `BepInExConfigMember(string section, string key, string defaultValue, string description = "", int order = 0)`
+    - フィールドまたはプロパティにのみ付与することができます。
+    - 公開されているフィールドやプロパティにのみ付与することができます。
+    - DefaultValueの型は、string、bool、byte、short、ushort、int、uint、long、ulong、float、double、decimal、object(Enumの為)です。
+    - orderパラメータは、設定項目の順番を決めることができます。
+        - 何も設定しない場合は、上から順に設定されます。
+    - メンバーの型が defaultValue の型と異なる場合、保存や読み込みの際に例外が発生します。
+
+#### Extended methods (拡張メソッド)
+
+- `T LoadConfig<T>(this ConfigFile config)`
+    - BepInExConfig属性を持つクラスをTに指定します。
+    - 読み込まれた設定クラスのインスタンスが返されます。
+
+- `void SaveConfig<T>(this ConfigFile config, T saveTarget)`
+    - saveTarget パラメータに BepInExConfig 属性を持つクラスのインスタンスを渡します
 
 ## CHANGE LOG 変更履歴
 
