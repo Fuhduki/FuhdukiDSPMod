@@ -2,14 +2,14 @@
 
 ## What's this? これは何？
 
-This isn't Mod. BepInEx Tools.
-This tool is BepInEx ConfigFile <-> Class Serializer/Deserializer.
-You need to do is to create a class for the configuration with the specified attributes.
+This isn't Mod. BepInEx Tools.  
+This tool is BepInEx ConfigFile <-> Class Serializer/Deserializer.  
+You need to do is to create a class for the configuration with the specified attributes.  
 Then, when you call the extension methods added by the tool, the settings will be saved and loaded according to the attributes set in the class.
 
-これは Mod ではなく、BepInEx のツールです。
-このツールは BepInEx の設定ファイルとクラスをシリアライズ/デシリアライズします。
-このツールを使うには、指定された属性を持つ設定用のクラスを作成する必要があります。
+これは Mod ではなく、BepInEx のツールです。  
+このツールは BepInEx の設定ファイルとクラスをシリアライズ/デシリアライズします。  
+このツールを使うには、指定された属性を持つ設定用のクラスを作成する必要があります。  
 あとは、ツールによって追加された拡張メソッドを呼び出すと、クラスに設定された属性に応じて設定の保存・読み込みが行われます。
 
 ## INSTALL インストール
