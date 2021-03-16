@@ -44,7 +44,6 @@ There is a plugin for testing in [BepInExCoinfgTest](https://github.com/Fuhduki/
 
 ### Sample Code サンプルコード
 
-
 Create config class.
 設定用クラスを作る。
 ``` TestConfig.cs
@@ -132,12 +131,12 @@ TestKey = KeypadEnter
 TestProp = 999
 ```
 
-### Simply API Document (簡単な API ドキュメント)
+### Simply API Document
 
-#### Attributes (属性)
+#### Attributes
 
 - `BepInExConfig`
-    - Can only be given to classes. クラスにしか付与できない属性です
+    - Can only be given to classes.
     - The configuration class must have a no-argument constructor. (It's OK if you don't write a constructor)
 
 - `BepInExConfigMember(string section, string key, string defaultValue, string description = "", int order = 0)`
@@ -173,7 +172,7 @@ TestProp = 999
         - 何も設定しない場合は、上から順に設定されます。
     - メンバーの型が defaultValue の型と異なる場合、保存や読み込みの際に例外が発生します。
 
-#### Extended methods (拡張メソッド)
+#### 拡張メソッド
 
 - `T LoadConfig<T>(this ConfigFile config)`
     - BepInExConfig属性を持つクラスをTに指定します。
