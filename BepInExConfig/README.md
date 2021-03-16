@@ -53,7 +53,7 @@ Create config class.
 
 Load config.
 設定をロード
-```
+```LoadConfig.cs
     public static TestConfig PluginConfig { get; set; }
     public static void PluginConfigLoad()
     {
@@ -67,9 +67,9 @@ Load config.
 
 Save config.
 設定を保存
-```
+```SaveConfig.cs
     public static TestConfig PluginConfig { get; set; }
-    public static void PluginConfigLoad()
+    public static void PluginConfigSave()
     {
         this.PluginConfig = new TestConfig()
         {
