@@ -14,22 +14,22 @@ Then, when you call the extension methods added by the tool, the settings will b
 
 ## INSTALL インストール
 
-### If r2modman r2modmanの場合
+### If r2modman
 1. Install BepInEx
 2. Install BepInExConfig
 3. Add BeinExConfig.dll to the project reference. (for Visual Stuio)
 
-
+### r2modmanの場合
 1. BepInEx をインストールします。
 2. BepInExConfig をインストールします。
 3. BepInExConfig.dll をプロジェクトの参照に追加します(Visual Stuio の場合)
 
-### If Manual 手動の場合
+### If Manual
 1. Install BepInEx
 2. Then copy BeinExConfig.dll into ~~~/steamapps/common/Dyson Sphere Program/BepInEx/plugins
 3. Add BeinExConfig.dll to the project reference. (for Visual Stuio)
 
-
+### 手動の場合
 1. BepInEx をインストールします。
 2. ダウンロードした BepInExConfig.dll を ~~~/steamapps/common/Dyson Sphere Program/BepInEx/plugins にコピーします
 3. BepInExConfig.dll をプロジェクトの参照に追加します(Visual Stuio の場合)
