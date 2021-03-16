@@ -34,7 +34,15 @@ Then, when you call the extension methods added by the tool, the settings will b
 
 ## Usage 使い方
 
+A simple sample is provided here.
+ここには簡単なサンプルを記載します。
+
+There is a plugin for testing in [BepInExCoinfgTest](https://github.com/Fuhduki/FuhdukiDSPMod/tree/main/BepInExCoinfgTest), so please refer to it.
+[BepInExCoinfgTest](https://github.com/Fuhduki/FuhdukiDSPMod/tree/main/BepInExCoinfgTest) にテスト用のプラグインがあるので参考にしてください。
+
 ### Sample Code サンプルコード
+
+
 Create config class.
 設定用クラスを作る。
 ``` TestConfig.cs
@@ -58,7 +66,7 @@ Create config class.
         private int PrivateProp { get; set; }
 
         // Not Work  - If you don't add the attribute, it won't work.
-        public int TestProp { get; set; }
+        public int NoAttributeProp { get; set; }
     }
 ```
 

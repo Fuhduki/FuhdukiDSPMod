@@ -61,18 +61,27 @@ namespace BepInExCoinfgTest
 
         }
 
-        [BepInExConfig]
+        [BepInExConfig] // 設定用クラスには必須
         public class TestConfig
         {
+            // Work - Public Property
             [BepInExConfigMember("Base", "TestProp", 10, order: 99)]
             public int TestProp { get; set; }
 
+            // Work - Public Field
             [BepInExConfigMember("Base", "TestField", "hogehoge", "Descripton", order: 0)]
             public string TestField;
 
-            [BepInExConfigMember("Base", "TestKey", KeyCode.Tab, "Descripton", order: 1)]
+            // Work - Enum
+            [BepInExConfigMember("Base", "TestKey", KeyCode.Tab, "Sample Key Code Config", order: 1)]
             public KeyCode TestKey;
-        }
 
+            // Not Work - Only public properties or field will work.
+            [BepInExConfigMember("Base", "TestProp", 10)]
+            private int PrivateProp { get; set; }
+
+            // Not Work  - If you don't add the attribute, it won't work.
+            public int NoAttributeProp { get; set; }
+        }
     }
 }
