@@ -34,20 +34,31 @@ Then, when you call the extension methods added by the tool, the settings will b
 
 ## Usage 使い方
 
+### Sample Code サンプルコード
 Create config class.
 設定用クラスを作る。
 ``` TestConfig.cs
-    [BepInExConfig]
+    [BepInExConfig] // 設定用クラスには必須
     public class TestConfig
     {
+        // Work - Public Property
         [BepInExConfigMember("Base", "TestProp", 10, order: 99)]
         public int TestProp { get; set; }
 
+        // Work - Public Field
         [BepInExConfigMember("Base", "TestField", "hogehoge", "Descripton", order: 0)]
         public string TestField;
 
+        // Work - Enum
         [BepInExConfigMember("Base", "TestKey", KeyCode.Tab, "Descripton", order: 1)]
         public KeyCode TestKey;
+
+        // Not Work - Only public properties or field will work.
+        [BepInExConfigMember("Base", "TestProp", 10, order: 99)]
+        private int PrivateProp { get; set; }
+
+        // Not Work  - If you don't add the attribute, it won't work.
+        public int TestProp { get; set; }
     }
 ```
 
@@ -87,10 +98,32 @@ Save config.
     }
 ```
 
+Saved Config Sample
+保存されたコンフィグのサンプル
+```config.cfg
+## Settings file was created by plugin BepInExCoinfgTest v0.0.1
+## Plugin GUID: Fuhduki.DSP.BepInExCoinfgTest
+
+[Base]
+
+## Descripton
+# Setting type: String
+# Default value: hogehoge
+TestField = hugahuga
+
+## Descripton
+# Setting type: KeyCode
+# Default value: Tab
+# Acceptable values: None, ...
+TestKey = KeypadEnter
+
+# Setting type: Int32
+# Default value: 10
+TestProp = 999
+```
+
 ## CHANGE LOG 変更履歴
 
 ### v0.1.0
 
  - Publish. 公開
-
-
