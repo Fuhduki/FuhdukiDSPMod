@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DestructorModeReset", "DestructorModeReset\DestructorModeReset.csproj", "{35ABAB70-CB99-4357-826B-84AA5C37F310}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BepInExCoinfgTest", "BepInExCoinfgTest\BepInExCoinfgTest.csproj", "{EFBD19D0-8328-4AEA-8A4D-C507B9C1E970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BepInExConfig", "BepInExConfig\BepInExConfig.csproj", "{A6850DC6-A751-4171-909B-292E681BDD56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{35ABAB70-CB99-4357-826B-84AA5C37F310}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35ABAB70-CB99-4357-826B-84AA5C37F310}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35ABAB70-CB99-4357-826B-84AA5C37F310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFBD19D0-8328-4AEA-8A4D-C507B9C1E970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFBD19D0-8328-4AEA-8A4D-C507B9C1E970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFBD19D0-8328-4AEA-8A4D-C507B9C1E970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFBD19D0-8328-4AEA-8A4D-C507B9C1E970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6850DC6-A751-4171-909B-292E681BDD56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6850DC6-A751-4171-909B-292E681BDD56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6850DC6-A751-4171-909B-292E681BDD56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6850DC6-A751-4171-909B-292E681BDD56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
