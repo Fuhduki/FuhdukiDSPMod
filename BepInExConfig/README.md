@@ -183,6 +183,10 @@ TestProp = 999
 
 ## CHANGE LOG 変更履歴
 
+### v0.1.1
+
+ - Fix manifest.json. manifest.json の修正
+
 ### v0.1.0
 
  - Publish. 公開
