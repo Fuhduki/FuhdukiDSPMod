@@ -36,10 +36,10 @@ Then, when you call the extension methods added by the tool, the settings will b
 
 ## Usage 使い方
 
-A simple sample is provided here.
+A simple sample is provided here.  
 ここには簡単なサンプルを記載します。
 
-There is a plugin for testing in [BepInExCoinfgTest](https://github.com/Fuhduki/FuhdukiDSPMod/tree/main/BepInExCoinfgTest), so please refer to it.
+There is a plugin for testing in [BepInExCoinfgTest](https://github.com/Fuhduki/FuhdukiDSPMod/tree/main/BepInExCoinfgTest), so please refer to it.  
 [BepInExCoinfgTest](https://github.com/Fuhduki/FuhdukiDSPMod/tree/main/BepInExCoinfgTest) にテスト用のプラグインがあるので参考にしてください。
 
 ### Sample Code サンプルコード
@@ -186,3 +186,8 @@ TestProp = 999
 ### v0.1.0
 
  - Publish. 公開
+
+ ## Caution (注意点)
+
+ We mistakenly released manifest.json under the name BepInConfig, but please delete that and use BepInExConfig.  
+ manifest.json を間違えて BepInConfig という名前でリリースしましたが、そちらは削除して BepInExConfig の方を使用してください。

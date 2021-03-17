@@ -1,7 +1,7 @@
 {
-  "name": "BepInConfig",
+  "name": "BepInExConfig",
   "version_number": "0.1.0",
-  "website_url": "https://github.com/Fuhduki/FuhdukiDSPMod/tree/main/BepInConfig",
+  "website_url": "https://github.com/Fuhduki/FuhdukiDSPMod/tree/main/BepInExConfig",
   "description": "Serialize and deserialize the BepInEx configration file into class.",
   "dependencies": [
     "xiaoye97-BepInEx-5.4.5"
