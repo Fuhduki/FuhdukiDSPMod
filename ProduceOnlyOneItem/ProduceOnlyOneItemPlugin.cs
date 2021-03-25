@@ -9,7 +9,7 @@ namespace ProduceOnlyOneItem
     {
         public const string ModGuid = "Fuhduki.DSP.ProduceOnlyOneItem";
         public const string ModName = "ProduceOnlyOneItem";
-        public const string ModVersion = "0.0.1";
+        public const string ModVersion = "1.0.0";
 
         internal new static ManualLogSource Logger;
 
