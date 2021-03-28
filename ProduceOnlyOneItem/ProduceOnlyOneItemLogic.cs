@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using UnityEngine;
 
 namespace ProduceOnlyOneItem
 {
@@ -26,7 +27,10 @@ namespace ProduceOnlyOneItem
             if (mechaForge.AddTask(selectRecipe.ID, 1) == null)
                 UIRealtimeTip.Popup("材料不足".Translate(), true, 0);
             else
+            {
+                VFAudio.Create("ui-click-1", null, Vector3.zero, true, 0);
                 GameMain.history.RegFeatureKey(1000104);
+            }
         }
     }
 }

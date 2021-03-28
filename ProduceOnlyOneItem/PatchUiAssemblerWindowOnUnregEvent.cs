@@ -6,10 +6,9 @@ namespace ProduceOnlyOneItem
     public class PatchUiAssemblerWindowOnUnregEvent
     {
         [HarmonyPostfix]
-        public static void Postfix(UIReplicatorWindow __instance)
+        public static void Postfix(UIButton ___okButton)
         {
-            ref var okButton = ref AccessTools.FieldRefAccess<UIReplicatorWindow, UIButton>(__instance, "okButton");
-            okButton.onRightClick -= OneItemProducePluginLogic.OnOkButtonRightClick;
+            ___okButton.onRightClick -= OneItemProducePluginLogic.OnOkButtonRightClick;
         }
     }
 }
