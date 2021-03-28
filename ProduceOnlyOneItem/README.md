@@ -15,6 +15,10 @@ Right-clicking on the Produce button in the Replicator window will produce count
 
 ## CHANGE LOG
 
+### v1.0.1
+
+ - Fixed the sound on click.
+
 ### v1.0.0
 
  - Released.
