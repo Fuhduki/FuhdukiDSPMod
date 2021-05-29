@@ -38,6 +38,10 @@ Right-clicking on the Produce button in the Replicator window will produce count
 
 ## 変更履歴
 
+### v1.0.1
+
+ - クリック時に音が鳴るように修正
+
 ### v1.0.0
 
  - リリース
