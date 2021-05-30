@@ -15,7 +15,7 @@ Right-clicking on the Produce button in the Replicator window will produce count
 
 ## CHANGE LOG
 
-### v1.1.2
+### v1.0.2
 
  - Support for new version 0.7.18.6931.
 
@@ -42,7 +42,7 @@ Right-clicking on the Produce button in the Replicator window will produce count
 
 ## 変更履歴
 
-### v1.1.2
+### v1.0.2
 
  - 新しいバージョン 0.7.18.6931 に対応
 
