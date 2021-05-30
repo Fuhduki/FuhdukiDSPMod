@@ -27,6 +27,10 @@ Also, if you want to reflect the settings, please load from save.
 
 ## CHANGE LOG
 
+### v1.1.1
+
+ - Support for new version 0.7.18.6931.
+
 ### v1.1.0
 
  - Add reset filter (Default Dispable).
@@ -62,6 +66,10 @@ MOD を導入した後に DSP を起動すると設定ファイルが作成さ�
 
 
 ## 変更履歴
+
+### v1.1.1
+
+ - 新しいバージョン 0.7.18.6931 に対応
 
 ### v1.1.0
 

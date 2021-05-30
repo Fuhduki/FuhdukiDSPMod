@@ -15,6 +15,10 @@ Right-clicking on the Produce button in the Replicator window will produce count
 
 ## CHANGE LOG
 
+### v1.1.2
+
+ - Support for new version 0.7.18.6931.
+
 ### v1.0.1
 
  - Fixed the sound on click.
@@ -37,6 +41,10 @@ Right-clicking on the Produce button in the Replicator window will produce count
 2. ダウンロードした ProduceOnlyOneItem.dll を ~~~/steamapps/common/Dyson Sphere Program/BepInEx/plugins にコピーします
 
 ## 変更履歴
+
+### v1.1.2
+
+ - 新しいバージョン 0.7.18.6931 に対応
 
 ### v1.0.1
 

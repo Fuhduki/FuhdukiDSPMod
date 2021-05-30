@@ -183,6 +183,10 @@ TestProp = 999
 
 ## CHANGE LOG 変更履歴
 
+### v0.1.2
+
+ - Support for new version 0.7.18.6931. 新しいバージョン 0.7.18.6931 に対応
+
 ### v0.1.1
 
  - Fix manifest.json. manifest.json の修正
