@@ -1,10 +1,10 @@
-﻿using BepInEx;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
 
 namespace DestructorModeReset
 {
@@ -30,7 +30,7 @@ namespace DestructorModeReset
             Config.ConfigReloaded += ConfigReloadedEvent;
             var harmony = new Harmony($"{ModGuid}.patch");
             harmony.PatchAll(typeof(Patch_GameMain_Begin));
-            harmony.PatchAll(typeof(Patch_PlayerAction_Build_PrepareBuild));
+            harmony.PatchAll(typeof(Patch_UIBuildMenu_SetCurrentCategory));
         }
 
         /// <summary>
@@ -93,7 +93,8 @@ namespace DestructorModeReset
                 Logger.LogInfo("cleared config.");
                 isSaveConfig = true;
                 modVersionConfig.Value = ModVersion;
-            } else if (modVersionConfig.Value != ModVersion)
+            }
+            else if (modVersionConfig.Value != ModVersion)
             {
                 Logger.LogInfo($"add new config : Version ${modVersionConfig.Value} -> {ModVersion}.");
                 isSaveConfig = true;
@@ -119,6 +120,7 @@ namespace DestructorModeReset
             Logger.LogInfo($"Setting: EnableDecstructCursorReset : {pluginConfig.EnableDecstructCursorReset}");
             Logger.LogInfo($"Setting: DestructCursor : {pluginConfig.DestructCursor}");
             Logger.LogInfo($"Setting: DestructChainString : {pluginConfig.DestructChainString}");
+            Logger.LogInfo($"Setting: DestructChain : {pluginConfig.DestructChain}");
             Logger.LogInfo($"Setting: EnableDestructFilterReset : {pluginConfig.EnableDestructFilterReset}");
             Logger.LogInfo($"Setting: DestructFilterFactory : {pluginConfig.DestructFilterFactory}");
             Logger.LogInfo($"Setting: DestructFilterBelt : {pluginConfig.DestructFilterBelt}");

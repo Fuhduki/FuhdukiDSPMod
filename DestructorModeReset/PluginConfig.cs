@@ -102,7 +102,7 @@ namespace DestructorModeReset
             }
 
             var destructChainString = config.DestructChainString;
-            if (destructChainString.ToLower() != DestructChainKeepString && 
+            if (destructChainString.ToLower() != DestructChainKeepString &&
                 !bool.TryParse(destructChainString, out var _))
             {
                 fixedPluginConfig = true;
@@ -111,10 +111,9 @@ namespace DestructorModeReset
 
             var destructFilterFactory = config.DestructFilterFactory;
             var destructFilterInserter = config.DestructFilterInserter;
-            if(destructFilterFactory && !destructFilterInserter)
+            if (destructFilterFactory && !destructFilterInserter)
             {
                 fixedPluginConfig = true;
-                destructFilterFactory = true;
                 destructFilterInserter = true;
             }
 
